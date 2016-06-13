@@ -48,6 +48,10 @@ public class WordCount extends Configured implements Tool{
 		// create a new configuration
         Configuration conf = new Configuration(true);
         
+        // setting it to local file system for testing
+        conf.set("mapred.job.tracker", "file:///");
+        conf.set("fs.default.name", "file:///");
+        
         // job configurations
         Job job = new Job(conf, getClass().getCanonicalName());
 		job.setJarByClass(getClass());
